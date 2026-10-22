@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worku Edosa | Full Stack & Android Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0b1120',
+                        cardBg: '#1e293b',
+                        accentCyan: '#38bdf8',
+                        accentBlue: '#0284c7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-accentCyan selection:text-darkBg min-h-screen flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fas fa-check-circle text-lg"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full z-40 glass-header border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+                <span class="text-accentCyan">&lt;</span>Worku<span class="text-accentCyan">.dev /&gt;</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-300">
+                <a href="#home" class="hover:text-accentCyan transition-colors">Home</a>
+                <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
+                <a href="#skills" class="hover:text-accentCyan transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" class="bg-accentBlue hover:bg-sky-600 text-white px-5 py-2.5 rounded-xl font-medium shadow-lg shadow-sky-900/30 transition-all duration-300 hover:scale-[1.02]">
+                    Hire Me
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block py-2 text-slate-300 hover:text-accentCyan transition-colors mobile-link">Home</a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-accentCyan transition-colors mobile-link">About</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-accentCyan transition-colors mobile-link">Skills</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-accentCyan transition-colors mobile-link">Projects</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-accentCyan transition-colors mobile-link">Contact</a>
+            <a href="#contact" class="inline-block mt-2 w-full text-center bg-accentBlue text-white py-2.5 rounded-xl font-medium mobile-link">
+                Hire Me
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow">
+        <div class="flex-1 text-center md:text-left space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-accentCyan text-sm font-medium">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Available for New Projects
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+                Hi, I'm <span class="text-gradient">Worku Edosa</span>
+            </h1>
+
+            <p class="text-xl sm:text-2xl font-medium text-slate-300">
+                Full Stack Developer & Android Specialist
+            </p>
+
+            <p class="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed mx-auto md:mx-0">
+                I design and engineer robust web platforms and native Android mobile apps using HTML, CSS, JavaScript, MySQL, PHP, and Python.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                <a href="#projects" class="bg-accentBlue hover:bg-sky-600 text-white px-7 py-3.5 rounded-xl font-semibold shadow-xl shadow-sky-900/40 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2">
+                    <span>View Projects</span>
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+                <a href="#contact" class="border border-slate-700 hover:border-accentCyan bg-slate-800/50 hover:bg-slate-800 text-slate-200 px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2">
+                    <span>Contact Me</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800 max-w-lg mx-auto md:mx-0">
+                <div>
+                    <p class="text-2xl sm:text-3xl font-bold text-white">7+</p>
+                    <p class="text-xs sm:text-sm text-slate-400">Core Stacks</p>
+                </div>
+                <div>
+                    <p class="text-2xl sm:text-3xl font-bold text-white">75</p>
+                    <p class="text-xs sm:text-sm text-slate-400">Responsive</p>
+                </div>
+                <div>
+                    <p class="text-2xl sm:text-3xl font-bold text-white">24/7</p>
+                    <p class="text-xs sm:text-sm text-slate-400">Support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex-shrink-0">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-accentCyan to-indigo-500 rounded-3xl blur opacity-30 animate-pulse"></div>
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-slate-700/80 bg-slate-800 shadow-2xl">
+                <img src="aaa.jpg" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Worku+Edosa';" 
+                     alt="Worku Edosa Profile Photo" 
+                     class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase">Overview</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">About Me</p>
+                <div class="w-16 h-1 bg-accentCyan mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-slate-300 leading-relaxed text-base sm:text-lg">
+                    <h3 class="text-2xl font-bold text-white">
+                        Full Stack Software & Native Android Specialist
+                    </h3>
+                    <p>
+                        I am Worku Edosa, a passionate software developer specializing in building end-to-end web and mobile solutions. I combine user-focused design with solid backend architecture.
+                    </p>
+                    <p class="text-slate-400 text-base">
+                        My skill set spans dynamic frontend interfaces, backend database modeling, REST API development, and mobile app design using modern standards and efficient practices.
+                    </p>
+                    
+                    <div class="pt-2 flex gap-4">
+                        <button onclick="copyEmail('yerosanedosa21@gmail.com')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-5 py-2.5 rounded-xl text-sm font-medium transition-colors flex items-center gap-2">
+                            <i class="fas fa-envelope text-accentCyan"></i>
+                            <span>Copy Email</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-8 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
+                    <h4 class="text-xl font-semibold text-white border-b border-slate-700/60 pb-3">Details & Specs</h4>
+                    
+                    <div class="space-y-3 text-sm sm:text-base">
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">Full Name</span>
+                            <span class="text-white font-medium">Worku Edosa</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">Primary Focus</span>
+                            <span class="text-accentCyan font-medium">Full Stack & Mobile</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">Frontend Stack</span>
+                            <span class="text-white font-medium">HTML5, CSS3, JS</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">Backend & DB</span>
+                            <span class="text-white font-medium">PHP, Python, MySQL</span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-slate-400">Mobile</span>
+                            <span class="text-white font-medium">Android Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase">Expertise</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">Technical Skills</p>
+                <div class="w-16 h-1 bg-accentCyan mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Android</h3>
+                    <p class="text-xs text-slate-400 mb-3">Mobile App Development</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-emerald-400 h-full w-[85%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">HTML5</h3>
+                    <p class="text-xs text-slate-400 mb-3">Semantic Web Structure</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-orange-400 h-full w-[95%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">CSS3</h3>
+                    <p class="text-xs text-slate-400 mb-3">Responsive Styling</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-sky-400 h-full w-[90%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">JavaScript</h3>
+                    <p class="text-xs text-slate-400 mb-3">Frontend Dynamic Logic</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-yellow-400 h-full w-[85%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">MySQL</h3>
+                    <p class="text-xs text-slate-400 mb-3">Relational Databases</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-blue-400 h-full w-[80%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">PHP</h3>
+                    <p class="text-xs text-slate-400 mb-3">Server-Side Web APIs</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-indigo-400 h-full w-[82%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Python</h3>
+                    <p class="text-xs text-slate-400 mb-3">Backend & Automation</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-teal-400 h-full w-[88%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 hover:border-accentCyan/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Git & Versioning</h3>
+                    <p class="text-xs text-slate-400 mb-3">Code Repositories</p>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-purple-400 h-full w-[85%] rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (LINK-OOTA WALIIN) -->
+    <section id="projects" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase">Portfolio</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">Featured Projects</p>
+                <div class="w-16 h-1 bg-accentCyan mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-cardBg rounded-2xl border border-slate-800 overflow-hidden flex flex-col hover:border-slate-700 transition-all duration-300 shadow-xl group">
+                    <div class="p-6 flex-1 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-accentBlue/10 text-accentCyan flex items-center justify-center text-2xl">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors">
+                            E-Commerce Web System
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Full-featured online e-commerce platform with dynamic product catalogs, secure cart management, and order processing built with PHP and MySQL.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">PHP</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">MySQL</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">JavaScript</span>
+                        </div>
+                    </div>
+                    <!-- Action Links -->
+                    <div class="p-6 pt-0 border-t border-slate-800/60 mt-4 flex items-center justify-between gap-4">
+                        <!-- LINK WEBSAAYITII BIRAAN SANAA (Live Demo) -->
+                        <a href="https://your-project-link.netlify.app" target="_blank" class="text-sm font-semibold text-accentCyan hover:text-sky-300 flex items-center gap-1.5 transition-colors">
+                            <span>Live Demo</span>
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                        <!-- LINK GITHUB CODE (GitHub Repo) -->
+                        <a href="https://github.com/workuedosa" target="_blank" class="text-sm font-medium text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-cardBg rounded-2xl border border-slate-800 overflow-hidden flex flex-col hover:border-slate-700 transition-all duration-300 shadow-xl group">
+                    <div class="p-6 flex-1 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors">
+                            Android Mobile App
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Native Android app delivering clean user experiences, smooth navigation, offline data persistence, and API integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Android</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Java/Kotlin</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">SQLite</span>
+                        </div>
+                    </div>
+                    <!-- Action Links -->
+                    <div class="p-6 pt-0 border-t border-slate-800/60 mt-4 flex items-center justify-between gap-4">
+                        <a href="https://your-android-app-link.com" target="_blank" class="text-sm font-semibold text-accentCyan hover:text-sky-300 flex items-center gap-1.5 transition-colors">
+                            <span>Live Demo</span>
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                        <a href="https://github.com/workuedosa" target="_blank" class="text-sm font-medium text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-cardBg rounded-2xl border border-slate-800 overflow-hidden flex flex-col hover:border-slate-700 transition-all duration-300 shadow-xl group">
+                    <div class="p-6 flex-1 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors">
+                            AutomateHub & Python API Engine
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Automated backend data pipeline and REST API featuring fast endpoints, structured data processing, and automated task workflows.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Python</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">FastAPI</span>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">MySQL</span>
+                        </div>
+                    </div>
+                    <!-- Action Links -->
+                    <div class="p-6 pt-0 border-t border-slate-800/60 mt-4 flex items-center justify-between gap-4">
+                        <a href="https://your-python-api-link.com" target="_blank" class="text-sm font-semibold text-accentCyan hover:text-sky-300 flex items-center gap-1.5 transition-colors">
+                            <span>Live Demo</span>
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                        <a href="https://github.com/workuedosa" target="_blank" class="text-sm font-medium text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase">Get In Touch</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">Contact Me</p>
+                <div class="w-16 h-1 bg-accentCyan mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-cardBg p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Your Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name" 
+                               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accentCyan transition-colors">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Your Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com" 
+                               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accentCyan transition-colors">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                        <textarea id="message" rows="5" required placeholder="Write your message here..." 
+                                  class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accentCyan transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-accentBlue hover:bg-sky-600 text-white font-semibold py-3.5 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Worku Edosa. All rights reserved.</p>
+            <div class="flex gap-6 text-lg text-slate-400">
+                <a href="#home" class="hover:text-accentCyan transition-colors"><i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const contactForm = document.getElementById('contact-form');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Thank you, Worku will get back to you soon!');
+            contactForm.reset();
+        });
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        function copyEmail(email) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email);
+                showToast('Email address copied to clipboard!');
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Email address copied to clipboard!');
+                } catch (err) {
+                    showToast('Failed to copy email');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+    </script>
+</body>
+</html>
